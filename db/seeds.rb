@@ -5,6 +5,6 @@
   	email: "#{Faker::HitchhikersGuideToTheGalaxy.planet}@email.com", 
   	password: "password", 
   	birthday: Faker::Date.birthday(18, 65),
-  	city: "#{Faker::Address.city}, Faker::Address.state_abbr",
+  	city: "#{Faker::Address.city}, #{Faker::Address.state_abbr}",
   	gender: ["female", "male"].sample)
 end

@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../Header';
 
 export default class App extends React.Component {
   constructor(...args) {
@@ -22,6 +23,7 @@ export default class App extends React.Component {
 
 		return (
 			<div>
+				<Header />
 				<h1>This is the temp banner</h1>
 				{modifiedChild}
 			</div>

@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import App from '../../components/App';
 
-export class HomePage extends React.Component {
+class HomePage extends React.Component {
 	render() {
 		return (
 			<div>
