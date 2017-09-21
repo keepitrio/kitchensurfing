@@ -41,7 +41,7 @@ export default class RegistrationForm extends React.Component {
         city: city
       })
     .then(function(response){
-    	console.log("success!")
+    	window.location="/";
       console.log(response);
     })
     .catch(function(error){

@@ -14,11 +14,8 @@ class UsersController < ApplicationController
 		)
 
 		if user.save
-			p "Successfully Saved"
-			p User.last
 			render json: user
 		else
-			p "FAILLLLLLLL"
 			render json:
 			{ errors: ["Sign up failed!"],
 				status: 422 }
