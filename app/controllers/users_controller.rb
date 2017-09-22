@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	include SessionsHelper
+	
 	def new
 	end
 
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
 		)
 
 		if user.save
+			login_user
 			render json: user
 		else
 			render json:

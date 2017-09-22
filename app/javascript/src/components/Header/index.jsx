@@ -5,6 +5,7 @@ export default class Header extends React.Component {
 		return (
 			<div>
 				<a href="/users/new">Register</a>
+				<a href="/login">Login</a>
 			</div>
 		);
 	}
