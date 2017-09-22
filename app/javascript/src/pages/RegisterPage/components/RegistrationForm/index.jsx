@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import axios from 'axios';
 
@@ -31,7 +30,7 @@ export default class RegistrationForm extends React.Component {
   }
 
   createUser(first_name, last_name, email, password, gender, birthday, city){
-    axios.post('/users', {
+    axios.post("/users", {
         first_name: first_name,
         last_name: last_name,
         email: email, 
@@ -40,18 +39,17 @@ export default class RegistrationForm extends React.Component {
         birthday: birthday, 
         city: city
       })
-    .then(function(response){
+    .then(function(response) {
     	window.location="/";
       console.log(response);
     })
-    .catch(function(error){
+    .catch(function(error) {
       console.log(error);
     })
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.birthday.toString())
     this.createUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password, this.state.gender, this.state.birthday, this.state.city)
   }
 
@@ -122,7 +120,7 @@ export default class RegistrationForm extends React.Component {
             />
           </label>
           <br />
-          <input type="submit" value="Register" onSubmit={this.setUser}/>
+          <input type="submit" value="Register"/>
         </form>
       </div>
     );

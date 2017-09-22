@@ -7,7 +7,7 @@ module SessionsHelper
 		!!current_user
 	end
 
-	def login_user
+	def login_user(user)
 		session[:user_id] = user.id
 	end
 
