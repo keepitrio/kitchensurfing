@@ -4,7 +4,5 @@
   	last_name: Faker::Name.last_name, 
   	email: "#{Faker::HitchhikersGuideToTheGalaxy.planet}@email.com", 
   	password: "password", 
-  	birthday: Faker::Date.birthday(18, 65),
-  	city: "#{Faker::Address.city}, #{Faker::Address.state_abbr}",
-  	gender: ["female", "male"].sample)
+  	location: "#{Faker::Address.city}, #{Faker::Address.state_abbr}, #{Faker::Address.country}"
 end

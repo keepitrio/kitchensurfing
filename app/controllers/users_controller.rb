@@ -6,13 +6,11 @@ class UsersController < ApplicationController
 
 	def create
 		user = User.new(
-			first_name: params[:first_name],
-			last_name: params[:last_name],
+			first_name: params[:first_name].capitalize,
+			last_name: params[:last_name].capitalize,
 			email: params[:email],
 			password: params[:password],
-			gender: params[:gender],
-			birthday: Date.parse(params[:birthday]),
-			city: params[:city]
+			location: params[:location]
 		)
 
 		if user.save
