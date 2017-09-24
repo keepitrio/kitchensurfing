@@ -9,7 +9,7 @@ export default class LoginForm extends React.Component {
 			email: '',
 			password: ''
 		}
-	}	
+	}
 
 	handleInputChange = (e) => {
     const value = e.target.value;
@@ -42,8 +42,7 @@ export default class LoginForm extends React.Component {
 	render() {
 		return (
 			<div>
-			  <p>{JSON.stringify(this.props.user)}</p>
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleSubmit} className='login-form'>
 					<label>
 						<input
 							placeholder="email"
@@ -62,7 +61,7 @@ export default class LoginForm extends React.Component {
 						/>
 					</label>
           <br />
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Log In"/>
 				</form>
 			</div>
 		);

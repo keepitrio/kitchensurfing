@@ -32,7 +32,7 @@ export default class RegistrationForm extends React.Component {
     axios.post("/users", {
         first_name: firstName,
         last_name: lastName,
-        email: email, 
+        email: email,
         password: password,
         location: location
       })
@@ -47,10 +47,10 @@ export default class RegistrationForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.createUser(
-      this.state.firstName, 
-      this.state.lastName, 
-      this.state.email, 
-      this.state.password, 
+      this.state.firstName,
+      this.state.lastName,
+      this.state.email,
+      this.state.password,
       this.state.location
     )
   }
@@ -61,10 +61,10 @@ export default class RegistrationForm extends React.Component {
       onChange: this.locationOnChange,
     }
     const locationOptions = {
-      types: ['(cities)'] 
+      types: ['(cities)']
     }
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='register-form'>
         <label>
           <input
             placeholder="first name"
@@ -101,12 +101,12 @@ export default class RegistrationForm extends React.Component {
           />
         </label>
         <br />
-        <label>
-          <PlacesAutocomplete 
-            inputProps={locationInputProps} 
+        <div className='register-input'>
+          <PlacesAutocomplete
+            inputProps={locationInputProps}
             options={locationOptions}
           />
-        </label>
+        </div>
         <br />
         <input type="submit" value="Register"/>
       </form>
