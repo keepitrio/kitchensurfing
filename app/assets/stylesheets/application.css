@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require normalize
  *= require_tree .
  *= require_self
  */
@@ -17,107 +18,3 @@
  body {
    font-family: Lato, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
  }
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid lightgrey;
-}
-
-.logo {
-  display: flex;
-  font-family: 'Over the rainbow', cursive;
-  color: #DD6B0D;
-}
-
-.navigation {
-  display: flex;
-}
-
-.navigation li {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  padding-left: 0px;
-}
-
-.register-button, .logout-button {
-  background-color: #287FC7;
-  border: 1px solid #287fb8;
-  border-radius: 3px;
-  color: white;
-  text-decoration: none;
-  font-family: sans-serif;
-  padding: 10px;
-  margin: 2px;
-}
-
-.login-button, .profile-button {
-  text-decoration: none;
-  border: 1px solid #287fb8;
-  border-radius: 3px;
-  color: #287FC7;
-  font-family: sans-serif;
-  padding: 10px;
-  margin: 2px;
-}
-
-.login-container, .register-container {
-  border-radius: 3px;
-  border: 1px solid lightgrey;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  width: 25%;
-  height: 30%;
-  flex-direction: column;
-  margin-top: 5px;
-}
-
-.login-title, .register-title {
-  width: 100%;
-  border-bottom: 1px lightgray solid;
-  text-align: center;
-  padding-bottom: 5px;
-}
-
-.login-form-container, .register-form-container {
-  width: 100%;
-  text-align: center;
-}
-
-.login-form, .register-form {
-  width: 100%;
-
-}
-
-.login-form input, .register-form input {
-  width: 75%;
-  margin: 5px;
-  padding: 8px;
-  border-radius: 3px;
-  box-shadow: none;
-  border:1px solid lightgray;
-}
-
-.register-input {
-  width: 72%;
-  margin: 5px;
-  padding: 8px;
-  border-radius: 3px;
-  box-shadow: none;
-  margin-left: 15px;
-}
-
-.login-form input:focus{
-  outline: none;
-}
-
-.login-form  input[type='submit'], .register-form input[type='submit'] {
-  background-color: #287fb8;
-  border: 1px solid #287fb8;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  margin-bottom: 30px;
-}

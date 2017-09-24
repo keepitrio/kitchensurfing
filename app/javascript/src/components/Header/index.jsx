@@ -18,7 +18,7 @@ export default class Header extends React.Component {
 					<h3 className="logo">Kitchensurfing</h3>
 					<ul className="navigation">
 						<li><a className="logout-button" href="/logout">Logout</a></li>
-						<li><a className="profile-button" href="#">Profile</a></li>
+						<li><a className="profile-button" href="/">Profile</a></li>
 					</ul>
 				</div>
 			);

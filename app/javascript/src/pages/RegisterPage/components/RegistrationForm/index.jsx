@@ -11,7 +11,7 @@ export default class RegistrationForm extends React.Component {
       lastName: '',
       email: '',
       password: '',
-      location: ''
+      location: '',
     }
   }
 
@@ -59,6 +59,7 @@ export default class RegistrationForm extends React.Component {
     const locationInputProps = {
       value: this.state.location,
       onChange: this.locationOnChange,
+      placeholder: 'Enter a city',
     }
     const locationOptions = {
       types: ['(cities)']
@@ -67,7 +68,7 @@ export default class RegistrationForm extends React.Component {
       <form onSubmit={this.handleSubmit} className='register-form'>
         <label>
           <input
-            placeholder="first name"
+            placeholder="First name"
             name="firstName"
             type="string"
             onChange={this.handleInputChange}
@@ -76,7 +77,7 @@ export default class RegistrationForm extends React.Component {
         <br />
         <label>
           <input
-            placeholder="last name"
+            placeholder="Last name"
             name="lastName"
             type="string"
             onChange={this.handleInputChange}
@@ -85,7 +86,7 @@ export default class RegistrationForm extends React.Component {
         <br />
         <label>
           <input
-            placeholder="email"
+            placeholder="Email"
             name="email"
             type="string"
             onChange={this.handleInputChange}
@@ -94,7 +95,7 @@ export default class RegistrationForm extends React.Component {
         <br />
         <label>
           <input
-            placeholder="password"
+            placeholder="Password"
             name="password"
             type="password"
             onChange={this.handleInputChange}
