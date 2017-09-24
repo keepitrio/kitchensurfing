@@ -12,12 +12,11 @@ export default class RegistrationForm extends React.Component {
       password: '',
       gender: '',
       birthday: '',
-      city: ''
+      city: '',
+      state_or_country: '',
+      searchTerm: '',
+      searchResults: []
     }
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.createUser = this.createUser.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange = (e) => {
@@ -41,7 +40,6 @@ export default class RegistrationForm extends React.Component {
       })
     .then(function(response) {
     	window.location="/";
-      console.log(response);
     })
     .catch(function(error) {
       console.log(error);

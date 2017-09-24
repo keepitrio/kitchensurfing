@@ -3,10 +3,14 @@ import React from 'react';
 import App from '../../components/App';
 
 class HomePage extends React.Component {
+	static propTypes = {
+		user: PropTypes.object, 
+	};
+
 	render() {
 		return (
 			<div>
-				<p>{this.props.user}</p>
+				<p>{JSON.stringify(this.props.user)}</p>
 			</div>
 		);
 	}
@@ -21,13 +25,3 @@ export default class HomePageContainer extends React.Component {
 		);
 	}
 }
-
-
-
-///////////////////////////////////
-// import Blah from './HomePage';
-// import { TITLE, HomePage, HomePageContainer } from './HomePage';
-// import * as Blah from './HomePage';
-
-// HomePage.TITLE
-// HomePage.HomePageContainer

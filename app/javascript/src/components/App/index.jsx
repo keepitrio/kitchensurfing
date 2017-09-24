@@ -1,20 +1,18 @@
 import React from 'react';
 import Header from '../Header';
+import axios from 'axios';
 
 export default class App extends React.Component {
-  constructor(...args) {
-  	super(...args);
-
+  constructor(props) {
+  	super(props);
   	this.state = {};
   }
 
 	componentWillMount() {
-		// call endpoint to fetch current user
-		console.log('component will mount');
-		setTimeout(() => {
-			console.log('setting the user');
-			this.setState({ user: 'rio' });
-		}, 3000);
+		axios.get("/auth")
+		.then((response) => {
+			this.setState({ user: response.data });
+		});
 	}
 
 	render() {
@@ -23,8 +21,7 @@ export default class App extends React.Component {
 
 		return (
 			<div>
-				<Header />
-				<h1>This is the temp banner</h1>
+				<Header user={ user } />
 				{modifiedChild}
 			</div>
 		);

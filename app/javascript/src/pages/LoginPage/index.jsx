@@ -8,7 +8,7 @@ class LoginPage extends React.Component {
 		return (
 			<div>
 				<h3>Log in to Kitchensurfing</h3>
-				<LoginForm />
+				<LoginForm user={ this.props.user } />
 			</div>
 		);
 	}

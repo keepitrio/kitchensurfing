@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 		)
 
 		if user.save
-			login_user
+			login_user(user)
 			render json: user
 		else
 			render json:

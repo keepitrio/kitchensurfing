@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
+	resources :auth, only: [:index]
 
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
