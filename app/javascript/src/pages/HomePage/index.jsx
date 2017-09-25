@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import App from '../../components/App';
+import UserGuestPreference from './components/UserGuestPreference'
 
 class HomePage extends React.Component {
 	static propTypes = {
@@ -8,18 +9,18 @@ class HomePage extends React.Component {
 	};
 
 	render() {
+		const { user } = this.props;
+
 		return (
 			<div>
-				<p>{JSON.stringify(this.props.user)}</p>
-				<div className='user'>
-					<div className='user-header'>
-						<p></p>
-					</div>
-					<div></div>
+				<div className='user-header'>
+					<p>{user && user.first_name} {user && user.last_name}</p>
+					<p>{user && user.location}</p>
 				</div>
+				<UserGuestPreference user={this.props.user}/>
 			</div>
 		);
-	}	
+	}
 }
 
 export default class HomePageContainer extends React.Component {

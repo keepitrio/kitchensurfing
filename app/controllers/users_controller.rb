@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	include SessionsHelper
-	
+
 	def new
 	end
 
@@ -21,5 +21,14 @@ class UsersController < ApplicationController
 			{ errors: ["Sign up failed!"],
 				status: 422 }
 		end
+	end
+
+	def update
+		string_to_boolean = { "true"=>true, "false"=>false, "null"=>nil }
+		if logged_in?
+			current_user.update_attribute(:accepting_guests, string_to_boolean[params[:accepting_guests]])
+		end
+
+		p current_user
 	end
 end
