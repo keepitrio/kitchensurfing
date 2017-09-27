@@ -20,9 +20,7 @@ ActiveRecord::Schema.define(version: 20170921000653) do
     t.string "last_name", null: false
     t.string "email", null: false
     t.string "password_digest"
-    t.string "gender"
-    t.string "city", null: false
-    t.date "birthday", null: false
+    t.string "location", null: false
     t.boolean "accepting_guests"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

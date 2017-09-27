@@ -6,9 +6,11 @@ import RegistrationForm from './components/RegistrationForm'
 class RegisterPage extends React.Component {
 	render() {
 		return (
-			<div>
-				<h3>Join Kitchensurfing for free</h3>
-				<RegistrationForm />
+			<div className='register-container'>
+				<h3 className='register-title'>Join Kitchensurfing for free</h3>
+				<div className='register-form-container'>
+					<RegistrationForm />
+				</div>
 			</div>
 		);
 	}

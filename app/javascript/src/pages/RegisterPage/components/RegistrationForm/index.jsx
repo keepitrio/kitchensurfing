@@ -1,23 +1,18 @@
 import React from 'react';
 import axios from 'axios';
+import PlacesAutocomplete from 'react-places-autocomplete'
 
 export default class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      first_name: '',
-      last_name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
-      gender: '',
-      birthday: '',
-      city: ''
+      location: '',
     }
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.createUser = this.createUser.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange = (e) => {
@@ -29,19 +24,20 @@ export default class RegistrationForm extends React.Component {
     });
   }
 
-  createUser(first_name, last_name, email, password, gender, birthday, city){
+  locationOnChange = (location) => {
+    this.setState({ location });
+  }
+
+  createUser(firstName, lastName, email, password, location){
     axios.post("/users", {
-        first_name: first_name,
-        last_name: last_name,
-        email: email, 
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
         password: password,
-        gender: gender, 
-        birthday: birthday, 
-        city: city
+        location: location
       })
     .then(function(response) {
     	window.location="/";
-      console.log(response);
     })
     .catch(function(error) {
       console.log(error);
@@ -50,79 +46,71 @@ export default class RegistrationForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.createUser(this.state.first_name, this.state.last_name, this.state.email, this.state.password, this.state.gender, this.state.birthday, this.state.city)
+    this.createUser(
+      this.state.firstName,
+      this.state.lastName,
+      this.state.email,
+      this.state.password,
+      this.state.location
+    )
   }
 
   render() {
+    const locationInputProps = {
+      value: this.state.location,
+      onChange: this.locationOnChange,
+      placeholder: 'Enter a city',
+    }
+    const locationOptions = {
+      types: ['(cities)']
+    }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              placeholder="first name"
-              name="first_name"
-              type="string"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            <input
-              placeholder="last name"
-              name="last_name"
-              type="string"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            <input
-              placeholder="email"
-              name="email"
-              type="string"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            <input
-              placeholder="password"
-              name="password"
-              type="password"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            <input
-              placeholder="gender"
-              name="gender"
-              type="string"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            <input
-              placeholder="birthday"
-              name="birthday"
-              type="date"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            <input
-              placeholder="city"
-              name="city"
-              type="string"
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <input type="submit" value="Register"/>
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit} className='register-form'>
+        <label>
+          <input
+            placeholder="First name"
+            name="firstName"
+            type="string"
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          <input
+            placeholder="Last name"
+            name="lastName"
+            type="string"
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          <input
+            placeholder="Email"
+            name="email"
+            type="string"
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <br />
+        <label>
+          <input
+            placeholder="Password"
+            name="password"
+            type="password"
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <br />
+        <div className='register-input'>
+          <PlacesAutocomplete
+            inputProps={locationInputProps}
+            options={locationOptions}
+          />
+        </div>
+        <br />
+        <input type="submit" value="Register"/>
+      </form>
     );
   }
 }

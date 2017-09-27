@@ -9,11 +9,7 @@ export default class LoginForm extends React.Component {
 			email: '',
 			password: ''
 		}
-
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.loginUser = this.loginUser.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}	
+	}
 
 	handleInputChange = (e) => {
     const value = e.target.value;
@@ -24,15 +20,14 @@ export default class LoginForm extends React.Component {
     });
 	}
 
-	loginUser(email, password) {
+	loginUser = (email, password) => {
+		var self = this;
 		axios.post("/login", {
 			email: email,
 			password: password
 		})
 		.then(function(response) {
-			console.log("reached this")
-			window.location="/";
-			console.log(response);
+			window.location = "/";
 		})
 		.catch(function(error) {
 			console.log(error);
@@ -47,7 +42,7 @@ export default class LoginForm extends React.Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleSubmit} className='login-form'>
 					<label>
 						<input
 							placeholder="email"
@@ -66,7 +61,7 @@ export default class LoginForm extends React.Component {
 						/>
 					</label>
           <br />
-          <input type="submit" value="Login"/>
+          <input type="submit" value="Log In"/>
 				</form>
 			</div>
 		);

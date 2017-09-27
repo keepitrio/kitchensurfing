@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 
 		if user && user.authenticate(params[:session][:password])
 			login_user(user)
+			render json: { status: 200 }
 		else
 			render json: { errors: ["incorrect email or password"], status: 422 }
 		end
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		logout_user
+		redirect_to '/'
 	end
 
 	private

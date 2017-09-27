@@ -1,12 +1,23 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import App from '../../components/App';
+import UserGuestPreference from './components/UserGuestPreference'
 
 class HomePage extends React.Component {
+	static propTypes = {
+		user: PropTypes.object,
+	};
+
 	render() {
+		const { user } = this.props;
+
 		return (
 			<div>
-				<p>{this.props.user}</p>
+				<div className='user-header'>
+					<p>{user && user.first_name} {user && user.last_name}</p>
+					<p>{user && user.location}</p>
+				</div>
+				<UserGuestPreference user={this.props.user}/>
 			</div>
 		);
 	}
@@ -21,13 +32,3 @@ export default class HomePageContainer extends React.Component {
 		);
 	}
 }
-
-
-
-///////////////////////////////////
-// import Blah from './HomePage';
-// import { TITLE, HomePage, HomePageContainer } from './HomePage';
-// import * as Blah from './HomePage';
-
-// HomePage.TITLE
-// HomePage.HomePageContainer
