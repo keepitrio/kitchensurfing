@@ -11,6 +11,14 @@
   margin-left: 10px;
 }
 
+.logo a {
+  text-decoration: none;
+}
+
+.logo a:visited {
+  color: #DD6B0D;
+}
+
 .navigation {
   display: flex;
   margin-right: 10px;
