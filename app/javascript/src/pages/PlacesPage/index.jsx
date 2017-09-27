@@ -33,8 +33,18 @@ class PlacesPage extends React.Component {
   }
 
 	render() {
+    const acceptingGuests = {
+      true: "Accepting Guests",
+      null: "Maybe Accepting Guests",
+      false: "Not Accepting Guests"
+    }
     const renderedHosts = this.state.hosts.map((host) =>
-    <li>{host.first_name} {host.last_name}</li>
+    <li>
+      <a href={"/users/" + host.id}>
+        <p>{host.first_name} {host.last_name}</p>
+        <p>{acceptingGuests[host.accepting_guests]}</p>
+      </a>
+    </li>
     );
 		return (
 			<ul>
