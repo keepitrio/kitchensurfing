@@ -10,16 +10,23 @@ class HomePage extends React.Component {
 
 	render() {
 		const { user } = this.props;
-
-		return (
-			<div>
-				<div className='user-header'>
-					<p>{user && user.first_name} {user && user.last_name}</p>
-					<p>{user && user.location}</p>
+		if(user) {
+			return (
+				<div>
+					<div className='user-header'>
+						<p>{user && user.first_name} {user && user.last_name}</p>
+						<p>{user && user.location}</p>
+					</div>
+					{this.props.user && <UserGuestPreference user={ this.props.user }/>}
 				</div>
-				{ this.props.user && <UserGuestPreference user={ this.props.user }/> }
-			</div>
-		);
+			);
+		} else {
+			return (
+				<div>
+					<h4>Welcome to Kitchensurfing. Register to get started! </h4>
+				</div>
+			)
+		}
 	}
 }
 
