@@ -17,7 +17,7 @@ class HomePage extends React.Component {
 					<p>{user && user.first_name} {user && user.last_name}</p>
 					<p>{user && user.location}</p>
 				</div>
-				<UserGuestPreference user={this.props.user}/>
+				{ this.props.user && <UserGuestPreference user={ this.props.user }/> }
 			</div>
 		);
 	}
