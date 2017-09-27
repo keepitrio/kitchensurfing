@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 	include SessionsHelper
+	def index
+		if params[:search]
+      users = User.where(location: params[:search])
+    else
+      users = User.where(location: current_user.location)
+    end
+
+    render json: users
+	end
 
 	def new
 	end
@@ -28,7 +37,5 @@ class UsersController < ApplicationController
 		if logged_in?
 			current_user.update_attribute(:accepting_guests, string_to_boolean[params[:accepting_guests]])
 		end
-
-		p current_user
 	end
 end

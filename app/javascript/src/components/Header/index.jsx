@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBar from './components/SearchBar'
 
 export default class Header extends React.Component {
 	render() {
@@ -16,6 +17,7 @@ export default class Header extends React.Component {
 			return (
 				<div className="header-container">
 					<h3 className="logo">Kitchensurfing</h3>
+					<SearchBar />
 					<ul className="navigation">
 						<li><a className="logout-button" href="/logout">Logout</a></li>
 						<li><a className="profile-button" href="/">Profile</a></li>
