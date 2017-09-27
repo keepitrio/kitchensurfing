@@ -3,11 +3,24 @@ import React from 'react';
 import axios from 'axios'
 
 export default class UserGuestPreference extends React.Component {
+	static propTypes = {
+		user: PropTypes.object,
+  };
+
   constructor(...args) {
     super(...args)
     this.state = {
-      acceptingGuests: "null"
+      acceptingGuests: ''
     }
+  }
+
+  componentDidMount = () => {
+    if(this.props.user.accepting_guests === null) {
+      var acceptingGuests = "null"
+    } else {
+      acceptingGuests = this.props.user.accepting_guests
+    }
+    this.setState({acceptingGuests: acceptingGuests})
   }
 
   handleSubmit = (e) => {
@@ -33,6 +46,7 @@ export default class UserGuestPreference extends React.Component {
 
 	render() {
 		return(
+    <div>
       <form onSubmit={this.handleSubmit}>
         <select value={this.state.acceptingGuests} onChange={this.handleChange}>
           <option value="true">Accepting Guests</option>
@@ -42,6 +56,7 @@ export default class UserGuestPreference extends React.Component {
         <br />
         <input type="submit" value="Save" />
       </form>
+    </div>
     )
 	}
 }
