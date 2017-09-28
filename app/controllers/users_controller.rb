@@ -32,9 +32,9 @@ class UsersController < ApplicationController
 			{ errors: ["Sign up failed!"],
 				status: 422 }
 		end
+	end
 
-		def show
-		end
+	def show
 	end
 
 	def update
