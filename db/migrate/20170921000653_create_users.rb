@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     	t.string :email, null: false
     	t.string :password_digest
     	t.string :location, null: false
-    	t.boolean :accepting_guests
+    	t.boolean :accepting_guests, default: nil
 
       t.timestamps
     end

@@ -21,7 +21,6 @@ export default class LoginForm extends React.Component {
 	}
 
 	loginUser = (email, password) => {
-		var self = this;
 		axios.post("/login", {
 			email: email,
 			password: password
