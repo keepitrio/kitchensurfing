@@ -27,6 +27,7 @@ export default class Header extends React.Component {
 					</h3>
 					{this.props.user && <SearchBar />}
 					<ul className="navigation">
+						<li><a className="messages" href="/messages">Messages</a></li>
 						<li><a className="logout-button" href="/logout">Logout</a></li>
 						<li><a className="profile-button" href="/">Profile</a></li>
 					</ul>
