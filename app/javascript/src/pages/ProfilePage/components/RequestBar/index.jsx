@@ -14,7 +14,7 @@ export default class RequestBar extends React.Component {
 
   componentWillMount = () => {
     let self = this
-    let url = '/requests/' + (this.props.profileUser && this.props.profileUser.id)
+    let url = '/api/requests/' + (this.props.profileUser && this.props.profileUser.id)
     axios.get(url)
     .then(function(response) {
       self.setState({
