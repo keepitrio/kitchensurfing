@@ -41,7 +41,7 @@ class ProfilePage extends React.Component {
 				return (
 					<div>
 						<UserHeader user={this.state.profileUser} />
-						<RequestBar profileUser={this.state.profileUser} user={user} />
+						{this.state.profileUser && <RequestBar profileUser={this.state.profileUser} user={user} />}
 					</div>
 				);
 			}
