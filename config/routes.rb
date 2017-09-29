@@ -6,9 +6,17 @@ Rails.application.routes.draw do
 	resources :requests, only: [:create, :show]
 	resources :messages, only: [:index, :show]
 
+
 	get '/login' => 'sessions#new'
 	post '/login' => 'sessions#create'
 	get '/logout' => 'sessions#destroy'
+
+	namespace :api, defaults: { format: 'json' } do
+		resources :auth, only: [:index, :show]
+		resources :requests, only: [:show]
+		resources :users, only: [:index]
+		resources :messages, only: [:index, :show]
+	end
 
 	root to: 'site#index'
 end
