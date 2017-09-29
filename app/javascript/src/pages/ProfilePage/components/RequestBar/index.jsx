@@ -8,17 +8,20 @@ export default class RequestBar extends React.Component {
 
     this.state = {
       showComponent: false,
-      conversationExists: false
+      conversationExists: false,
+      acceptingGuests: false
     }
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     let self = this
-    let url = '/requests/' + (this.props.profileUser && this.props.profileUser.id)
+    // TODO: why is this.props.profileUser undefined when i refresh the page?
+    let url = '/api/requests/' + window.location.pathname.split("/users/")[1]
     axios.get(url)
     .then(function(response) {
       self.setState({
-        conversationExists: response.data.conversation_exists
+        conversationExists: response.data.conversation_exists,
+        acceptingGuests: response.data.accepting_guests
       })
     })
     .catch(function(error) {
@@ -46,13 +49,24 @@ export default class RequestBar extends React.Component {
           <a href="/messages">View Conversation</a>
         </div>
       )
+    } else if(this.state.conversationExists === false
+            && this.state.acceptingGuests === true) {
+      return (
+        <div>
+          <p>{acceptingGuests[profileUser.accepting_guests]}</p>
+          <button onClick={this.onButtonClick}>Request Kitchen</button>
+          {this.state.showComponent ?
+            <RequestForm profileUser={profileUser} user={user} /> : null
+          }
+        </div>
+      )
     } else {
       return (
         <div>
           <p>{acceptingGuests[profileUser.accepting_guests]}</p>
           <button onClick={this.onButtonClick}>Message Host</button>
           {this.state.showComponent ?
-            <RequestForm profileUser={profileUser} user={user} /> : null
+            <RequestForm profileUser={profileUser} user={user} datePicker={false}/> : null
           }
         </div>
       )

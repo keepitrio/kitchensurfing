@@ -19,7 +19,7 @@ class ProfilePage extends React.Component {
 
 	componentWillMount = () => {
 		var self = this
-		axios.get('/auth/'+window.location.pathname.split("/users/")[1])
+		axios.get('/api/auth/'+window.location.pathname.split("/users/")[1])
 		.then(function(response) {
 			self.setState({profileUser: response.data})
 		})
@@ -41,7 +41,7 @@ class ProfilePage extends React.Component {
 				return (
 					<div>
 						<UserHeader user={this.state.profileUser} />
-						<RequestBar profileUser={this.state.profileUser} user={user} />
+						{this.state.profileUser && <RequestBar profileUser={this.state.profileUser} user={user} />}
 					</div>
 				);
 			}

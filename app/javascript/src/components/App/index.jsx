@@ -9,7 +9,7 @@ export default class App extends React.Component {
   }
 
 	componentWillMount() {
-		axios.get("/auth")
+		axios.get("/api/auth")
 		.then((response) => {
 			this.setState({ user: response.data });
 		});
