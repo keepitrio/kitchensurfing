@@ -19,9 +19,9 @@ class PlacesPage extends React.Component {
   componentWillMount = () => {
     var self = this
     if(location.search.substring(1)) {
-      var url = '/users?search='+location.search.substring(1)
+      var url = '/api/users?search='+location.search.substring(1)
     } else {
-      url = '/users'
+      url = '/api/users'
     }
     axios.get(url)
     .then(function(response) {
