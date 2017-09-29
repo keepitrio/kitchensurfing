@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import axios from 'axios';
 
-export default class Messages extends React.Component {
+export default class RequestForm extends React.Component {
   constructor(...args) {
     super(...args)
     this.state = {
@@ -42,7 +42,7 @@ export default class Messages extends React.Component {
     })
     .then(function(response){
       console.log("success")
-      console.log(response)
+      document.getElementById("request-form").reset();
     })
     .catch(function(error){
       console.log(error)
@@ -52,15 +52,15 @@ export default class Messages extends React.Component {
   render() {
     return (
       <div>
-        <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleStartChange}
-        />
-        <DatePicker
-          selected={this.state.endDate}
-          onChange={this.handleEndChange}
-        />
-        <form onSubmit={this.handleSubmit}>
+        <form id="request-form" onSubmit={this.handleSubmit}>
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleStartChange}
+          />
+          <DatePicker
+            selected={this.state.endDate}
+            onChange={this.handleEndChange}
+          />
           <input
             type="text"
             name="message"
