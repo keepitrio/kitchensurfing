@@ -1,4 +1,4 @@
-class AuthController < ApplicationController
+class Api::AuthController < ApplicationController
 	include SessionsHelper
 
 	# render JSON user object for logged in user
