@@ -50,25 +50,40 @@ export default class RequestForm extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <form id="request-form" onSubmit={this.handleSubmit}>
-          <DatePicker
-            selected={this.state.startDate}
-            onChange={this.handleStartChange}
-          />
-          <DatePicker
-            selected={this.state.endDate}
-            onChange={this.handleEndChange}
-          />
-          <input
-            type="text"
-            name="message"
-            onChange={this.handleInputChange}
-          />
-          <input type="submit" value="Send" />
-        </form>
-      </div>
-    )
+    if(this.props.datePicker === false) {
+      return (
+        <div>
+          <form id="request-form" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="message"
+              onChange={this.handleInputChange}
+            />
+            <input type="submit" value="Send" />
+          </form>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <form id="request-form" onSubmit={this.handleSubmit}>
+            <DatePicker
+              selected={this.state.startDate}
+              onChange={this.handleStartChange}
+            />
+            <DatePicker
+              selected={this.state.endDate}
+              onChange={this.handleEndChange}
+            />
+            <input
+              type="text"
+              name="message"
+              onChange={this.handleInputChange}
+            />
+            <input type="submit" value="Send" />
+          </form>
+        </div>
+      )
+    }
   }
 }

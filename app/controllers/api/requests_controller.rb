@@ -5,16 +5,13 @@ class Api::RequestsController < ApplicationController
   end
 
   def show
-    host_messages = Request.where(host_id: current_user.id)
-    traveler_messages = Request.where(traveler_id: current_user.id)
-    messages = host_messages + traveler_messages
-
     conversation_exists = Request.where(host_id: params[:id],
-                                        traveler_id: current_user.id) ? true : false
+                                        traveler_id: current_user.id).length > 0 ? true : false
+    accepting_guests = User.find(params[:id]).accepting_guests
 
     render json: {
-      messages: messages,
-      conversation_exists: conversation_exists
+      conversation_exists: conversation_exists,
+      accepting_guests: accepting_guests
     }
   end
 end
