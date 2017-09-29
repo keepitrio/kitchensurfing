@@ -5,6 +5,5 @@ class MessagesController < ApplicationController
   end
 
   def show
-    messages = Message.where(request_id: params[:id])
   end
 end
