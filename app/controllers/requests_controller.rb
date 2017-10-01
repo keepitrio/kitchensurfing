@@ -8,7 +8,8 @@ class RequestsController < ApplicationController
       message: params[:message],
       host_id: params[:host_id],
       traveler_id: params[:traveler_id],
-      accepted: false
+      accepted: false,
+      read: false
     )
 
     if request.save

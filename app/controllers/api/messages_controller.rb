@@ -12,6 +12,12 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    messages = Message.where(request_id: params[:id])
+    request = Request.find(params[:id])
+    messages = request.messages
+
+    render json: {
+      request: request,
+      messages: messages
+    }
   end
 end

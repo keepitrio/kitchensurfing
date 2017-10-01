@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 	resources :auth, only: [:index, :show]
 	resources :places, only: [:index]
 	resources :requests, only: [:create, :show]
-	resources :messages, only: [:index, :show]
+	resources :messages, only: [:index, :create, :show]
 
 
 	get '/login' => 'sessions#new'
