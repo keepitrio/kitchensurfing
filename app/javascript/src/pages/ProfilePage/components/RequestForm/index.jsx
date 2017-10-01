@@ -57,7 +57,6 @@ export default class RequestForm extends React.Component {
         traveler_id: this.props.user && this.props.user.id
       })
       .then(function(response){
-        console.log(response)
         console.log("success")
         document.getElementById("request-form").reset();
         location.reload();
@@ -78,7 +77,8 @@ export default class RequestForm extends React.Component {
       message: this.state.message
     })
     .then(function(response) {
-      console.log(response)
+      document.getElementById("request-form").reset();
+      location.reload();
     })
     .catch(function(error) {
       console.log(error)

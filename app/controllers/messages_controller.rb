@@ -7,8 +7,9 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(
       request_id: params[:request_id],
-      user_id: params[:user_id],
-      message: params[:message]
+      user_id: current_user.id,
+      message: params[:message],
+      read: false
     )
 
     if message.save

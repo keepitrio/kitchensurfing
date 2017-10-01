@@ -51,7 +51,7 @@ export default class MessageShow extends React.Component {
           {this.getUserName(this.state.request.id)}: {this.state.request.message}
         </li>
         {messageList}
-        <RequestForm datePicker={false} requestID={null} />
+        <RequestForm datePicker={false} requestID={this.state.request.id} />
       </ul>
     </div>
     )
