@@ -69,8 +69,6 @@ export default class RequestForm extends React.Component {
 
   handleMessageSubmit = (e) => {
     e.preventDefault();
-    console.log(this.props.user && this.props.user)
-    console.log(this.props.requestID && this.props.requestID)
     axios.post('/messages', {
       request_id: this.props.requestID && this.props.requestID,
       user_id: this.props.user && this.props.user.id,

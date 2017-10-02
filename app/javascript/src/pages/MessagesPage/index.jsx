@@ -30,7 +30,7 @@ export default class MessagesPageContainer extends React.Component {
 	render() {
 		return (
 			<App>
-				<MessagesPage />
+				<MessagesPage user={this.props.user}/>
 			</App>
 		);
 	}

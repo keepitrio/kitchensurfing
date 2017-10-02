@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
 	namespace :api, defaults: { format: 'json' } do
 		resources :auth, only: [:index, :show]
-		resources :requests, only: [:show]
-		resources :users, only: [:index]
+		resources :requests, only: [:index, :show]
+		resources :users, only: [:index, :show]
 		resources :messages, only: [:index, :show]
 	end
 
