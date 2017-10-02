@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20170928142440) do
   create_table "messages", force: :cascade do |t|
     t.integer "request_id"
     t.integer "user_id"
-    t.text "messages"
+    t.text "message"
+    t.boolean "read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170928142440) do
     t.integer "host_id"
     t.integer "traveler_id"
     t.boolean "accepted"
+    t.boolean "read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

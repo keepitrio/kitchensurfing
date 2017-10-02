@@ -7,7 +7,8 @@ class CreateRequests < ActiveRecord::Migration[5.1]
       t.integer :host_id
       t.integer :traveler_id
       t.boolean :accepted
-      
+      t.boolean :read
+
       t.timestamps
     end
   end
