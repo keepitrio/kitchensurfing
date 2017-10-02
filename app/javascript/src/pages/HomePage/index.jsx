@@ -20,7 +20,7 @@ class HomePage extends React.Component {
 			);
 		} else {
 			return (
-				<div>
+				<div className="homepage">
 					<h4>Welcome to Kitchensurfing. Register to get started! </h4>
 				</div>
 			)
