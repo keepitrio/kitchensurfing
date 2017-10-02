@@ -32,7 +32,7 @@ export default class UserGuestPreference extends React.Component {
       console.log("success")
     })
     .catch(function(error) {
-      console.log("error")
+      console.log(error)
     })
   }
 

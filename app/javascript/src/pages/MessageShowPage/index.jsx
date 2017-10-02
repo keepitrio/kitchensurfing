@@ -8,7 +8,9 @@ class MessageShowPage extends React.Component {
 		super(...args)
 		this.state = {
 			request: {},
-			messages: []
+			messages: [],
+			host: '',
+			traveler: ''
 		}
 	}
 
@@ -18,7 +20,8 @@ class MessageShowPage extends React.Component {
 		.then(function(response) {
 			self.setState({
 				request: response.data.request,
-				messages: response.data.messages
+				messages: response.data.messages,
+				requestInitiator: response.data.request_initiator
 			})
 		})
 		.catch(function(error) {
@@ -28,14 +31,14 @@ class MessageShowPage extends React.Component {
 
 	render() {
 		const messageList = this.state.messages.map((message) =>
-		<li key={message.id}>
-			{message.message}
+		<li key={message.message}>
+			{message.sender_name}: {message.message}
 		</li>
 		)
 
 		return (
 			<ul>
-				<li>{this.state.request.message}</li>
+				<li>{this.state.requestInitiator}: {this.state.request.message}</li>
 				{messageList}
 			</ul>
 		);

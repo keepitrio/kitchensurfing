@@ -12,16 +12,37 @@ class MessagesPage extends React.Component {
     super(...args);
 
     this.state = {
-      messageThreads: []
+			messageThreads: []
     }
   }
 
   componentWillMount = () => {
-  }
+		var self = this;
+		axios.get('/api/messages')
+		.then(function(response){
+			self.setState({
+				messageThreads: response.data.messages_to_render
+			})
+		})
+		.catch(function(error) {
+			console.log(error)
+		})
+	}
 
 	render() {
+		const messageList = this.state.messageThreads.map((message) =>
+			<li key={message.message}>
+				<a href={'/messages/' + message.id}>
+					{message.sender}: {message.message}
+				</a>
+			</li>
+		)
 		return (
-			<h1>hello!</h1>
+			<div>
+				<ul>
+					{messageList}
+				</ul>
+			</div>
 		);
 	}
 }
