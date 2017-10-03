@@ -20,7 +20,7 @@ export default class App extends React.Component {
 		const modifiedChild = React.cloneElement(this.props.children, { user });
 
 		return (
-			<div>
+			<div className="body">
 				<Header user={ user } />
 				{modifiedChild}
 			</div>

@@ -1,0 +1,36 @@
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.inbox-thread-item {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  margin-right: 30px;
+}
+
+.thread-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.message-link {
+  width: 100%;
+}
+
+.time-ago {
+  size: .5em;
+}
+
+.message-details p{
+  text-align: right;
+}

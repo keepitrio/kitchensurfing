@@ -13,7 +13,7 @@ class HomePage extends React.Component {
 		const { user } = this.props;
 		if(user) {
 			return (
-				<div>
+				<div className="user-header">
 					<UserHeader user={user} />
 					{this.props.user && <UserGuestPreference user={ this.props.user }/>}
 				</div>

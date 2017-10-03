@@ -12,14 +12,17 @@ class Api::MessagesController < ApplicationController
       message_hash[:message] = message.message
       if host_messages.include?(message)
         message_hash[:sender] = message.traveler.first_name
+        message_hash[:sender_location] = message.traveler.location
       elsif traveler_messages.include?(message)
         message_hash[:sender] = message.host.first_name
+        message_hash[:sender_location] = message.host.location
       end
       message_hash[:read] = message.read
       message_hash[:start_date] = message.start_date
       message_hash[:end_date] = message.end_date
       message_hash[:accepted] = message.accepted
       message_hash[:id] = message.id
+      message_hash[:sent_time] = ((Time.now - message.created_at)/86400).round.to_s + " days ago"
 
       messages_to_render << message_hash
     end
