@@ -64,6 +64,7 @@
   height: 30%;
   flex-direction: column;
   margin-top: 5px;
+  background-color: white;
 }
 
 .login-title, .register-title {

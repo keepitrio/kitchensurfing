@@ -52,10 +52,9 @@ a {
   flex-direction: column;
 }
 
-#request-form input[type="text"] {
-  height: 100px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+#request-form textarea {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 #request-form input[type="submit"] {

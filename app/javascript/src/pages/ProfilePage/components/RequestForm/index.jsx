@@ -86,7 +86,7 @@ export default class RequestForm extends React.Component {
     if(this.props.datePicker === false && this.props.requestID != null) {
       return (
         <form id="request-form" onSubmit={this.handleMessageSubmit}>
-          <input
+          <textarea
             type="text"
             name="message"
             onChange={this.handleInputChange}

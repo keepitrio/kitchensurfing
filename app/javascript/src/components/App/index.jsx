@@ -22,7 +22,9 @@ export default class App extends React.Component {
 		return (
 			<div className="body">
 				<Header user={ user } />
-				{modifiedChild}
+				<div className="body-container">
+					{modifiedChild}
+				</div>
 			</div>
 		);
 	}
