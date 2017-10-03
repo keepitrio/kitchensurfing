@@ -33,15 +33,19 @@ class ProfilePage extends React.Component {
 		if(user) {
 			if(user.id === parseInt(window.location.pathname.split("/users/")[1])) {
 				return (
-					<div>
+					<div className="user-header">
 						<UserHeader user={user} />
 					</div>
 				);
 			} else {
 				return (
-					<div>
-						<UserHeader user={this.state.profileUser} />
-						{this.state.profileUser && <RequestBar profileUser={this.state.profileUser} user={user} />}
+					<div className="dashboard">
+						<div className="user-header">
+							<UserHeader user={this.state.profileUser} />
+						</div>
+						<div className="upcoming">
+							{this.state.profileUser && <RequestBar profileUser={this.state.profileUser} user={user} />}
+						</div>
 					</div>
 				);
 			}

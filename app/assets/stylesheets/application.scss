@@ -17,4 +17,19 @@
 
  body {
    font-family: Lato, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   background-color: #f1efea;
  }
+
+ html, body, #app, #app>div {
+  height: 100%
+}
+
+ .homepage {
+   background-image: url('homepage.jpeg');
+ }
+
+ .search-input {
+   margin-top: 4px;
+ }
+
+

@@ -15,9 +15,8 @@ export default class SearchBar extends React.Component {
     this.setState({ searchLocation });
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    window.location = '/places?' + this.state.searchLocation;
+  handleSelect = (address, placeId) => {
+    window.location = '/places?' + address;
   }
 
 	render() {
@@ -32,14 +31,14 @@ export default class SearchBar extends React.Component {
     }
 
 		return (
-      <form className='search-bar' onSubmit={this.handleSubmit}>
+      <form className='search-bar' onSubmit={this.handleSelect}>
         <div className='search-input'>
           <PlacesAutocomplete
             inputProps={locationInputProps}
             options={locationOptions}
+            onSelect={this.handleSelect}
           />
         </div>
-        <input type='submit' value='🔍' />
       </form>
     )
 	}

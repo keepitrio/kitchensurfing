@@ -32,7 +32,7 @@ export default class UserGuestPreference extends React.Component {
       console.log("success")
     })
     .catch(function(error) {
-      console.log("error")
+      console.log(error)
     })
   }
 
@@ -47,13 +47,12 @@ export default class UserGuestPreference extends React.Component {
 	render() {
 		return(
     <div>
-      <form onSubmit={this.handleSubmit}>
+      <form className="preference-form-container" onSubmit={this.handleSubmit}>
         <select value={this.state.acceptingGuests} onChange={this.handleChange}>
           <option value="true">Accepting Guests</option>
           <option value="null">Maybe Accepting Guests</option>
           <option value="false">Not Accepting Guests</option>
         </select>
-        <br />
         <input type="submit" value="Save" />
       </form>
     </div>

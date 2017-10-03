@@ -1,0 +1,33 @@
+.dashboard{
+  display: flex;
+}
+
+.upcoming {
+  flex-grow: 2;
+}
+
+.upcoming-trips {
+  background-color: white;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.upcoming-guests {
+  background-color: white;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.trip-title {
+  border-bottom: 1px solid lightgray;
+}
+
+.hosting-title {
+  border-bottom: 1px solid lightgray;
+}
+
+.homepage-logged-out {
+  text-align: center;
+  font-size: 3em;
+  margin: 20px;
+}

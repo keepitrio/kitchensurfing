@@ -1,0 +1,74 @@
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.inbox-thread-item {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.thread-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.message-link {
+  width: 100%;
+}
+
+.time-ago {
+  size: .5em;
+}
+
+.message-details p{
+  text-align: right;
+}
+
+.message-show {
+  background-color: white;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+#request-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+#request-form textarea {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#request-form input[type="submit"] {
+  width: 20%;
+  background-color: #287FC7;
+  border: 1px solid #287fb8;
+  border-radius: 3px;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  padding: 5px;
+  margin: 2px;
+}
+
+.message-list-items {
+  width: 100%;
+}

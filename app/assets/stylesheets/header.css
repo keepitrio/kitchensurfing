@@ -1,7 +1,9 @@
 .header-container {
   display: flex;
   justify-content: space-between;
+  height: 50px;
   border-bottom: 2px solid lightgrey;
+  background-color: white;
 }
 
 .logo {
@@ -62,6 +64,7 @@
   height: 30%;
   flex-direction: column;
   margin-top: 5px;
+  background-color: white;
 }
 
 .login-title, .register-title {

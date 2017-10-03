@@ -31,58 +31,100 @@ export default class RequestForm extends React.Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleRequestSubmit = (e) => {
     e.preventDefault();
-    axios.post('/requests', {
-      start_date: this.state.startDate,
-      end_date: this.state.endDate,
-      message: this.state.message,
-      host_id: this.props.profileUser && this.props.profileUser.id,
-      traveler_id: this.props.user && this.props.user.id
+    if(this.props.requestID === null) {
+      axios.post('/requests', {
+        message: this.state.message,
+        host_id: this.props.profileUser && this.props.profileUser.id,
+        traveler_id: this.props.user && this.props.user.id
+      })
+      .then(function(response){
+        console.log("success")
+        document.getElementById("request-form").reset();
+        location.reload();
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+    } else {
+      axios.post('/requests', {
+        start_date: this.state.startDate,
+        end_date: this.state.endDate,
+        message: this.state.message,
+        host_id: this.props.profileUser && this.props.profileUser.id,
+        traveler_id: this.props.user && this.props.user.id
+      })
+      .then(function(response){
+        console.log("success")
+        document.getElementById("request-form").reset();
+        location.reload();
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+    }
+  }
+
+  handleMessageSubmit = (e) => {
+    e.preventDefault();
+    axios.post('/messages', {
+      request_id: this.props.requestID && this.props.requestID,
+      user_id: this.props.user && this.props.user.id,
+      message: this.state.message
     })
-    .then(function(response){
-      console.log("success")
+    .then(function(response) {
       document.getElementById("request-form").reset();
+      location.reload();
     })
-    .catch(function(error){
+    .catch(function(error) {
       console.log(error)
     })
   }
 
   render() {
-    if(this.props.datePicker === false) {
+    if(this.props.datePicker === false && this.props.requestID != null) {
       return (
-        <div>
-          <form id="request-form" onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              name="message"
-              onChange={this.handleInputChange}
-            />
-            <input type="submit" value="Send" />
-          </form>
-        </div>
+        <form id="request-form" onSubmit={this.handleMessageSubmit}>
+          <textarea
+            type="text"
+            name="message"
+            onChange={this.handleInputChange}
+            placeholder="Write a message"
+          />
+          <input type="submit" value="Send" />
+        </form>
+      )
+    } else if(this.props.datePicker === false && this.props.requestID === null) {
+      return (
+        <form id="request-form" onSubmit={this.handleRequestSubmit}>
+          <input
+            type="text"
+            name="message"
+            onChange={this.handleInputChange}
+            placeholder="Write a message"
+          />
+          <input type="submit" value="Send" />
+        </form>
       )
     } else {
       return (
-        <div>
-          <form id="request-form" onSubmit={this.handleSubmit}>
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleStartChange}
-            />
-            <DatePicker
-              selected={this.state.endDate}
-              onChange={this.handleEndChange}
-            />
-            <input
-              type="text"
-              name="message"
-              onChange={this.handleInputChange}
-            />
-            <input type="submit" value="Send" />
-          </form>
-        </div>
+        <form id="request-form" onSubmit={this.handleRequestSubmit}>
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleStartChange}
+          />
+          <DatePicker
+            selected={this.state.endDate}
+            onChange={this.handleEndChange}
+          />
+          <input
+            type="text"
+            name="message"
+            onChange={this.handleInputChange}
+          />
+          <input type="submit" value="Send" />
+        </form>
       )
     }
   }
