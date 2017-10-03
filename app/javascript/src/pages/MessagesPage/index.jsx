@@ -32,9 +32,20 @@ class MessagesPage extends React.Component {
 	render() {
 		const messageList = this.state.messageThreads.map((message) =>
 			<li key={message.message}>
-				<a href={'/messages/' + message.id}>
-					{message.sender}: {message.message}
-				</a>
+				<div className="inbox-thread-item">
+					<a href={'/messages/' + message.id} className="message-link">
+						<div className="thread-info">
+							<div>
+								<p><strong>{message.sender}</strong></p>
+								<p>{message.sender_location}</p>
+							</div>
+							<div className="message-details">
+								<p>{message.message}</p>
+								<p className="time-ago">{message.sent_time}</p>
+							</div>
+						</div>
+					</a>
+				</div>
 			</li>
 		)
 		return (

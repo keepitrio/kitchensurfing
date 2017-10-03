@@ -85,50 +85,46 @@ export default class RequestForm extends React.Component {
   render() {
     if(this.props.datePicker === false && this.props.requestID != null) {
       return (
-        <div>
-          <form id="request-form" onSubmit={this.handleMessageSubmit}>
-            <input
-              type="text"
-              name="message"
-              onChange={this.handleInputChange}
-            />
-            <input type="submit" value="Send" />
-          </form>
-        </div>
+        <form id="request-form" onSubmit={this.handleMessageSubmit}>
+          <textarea
+            type="text"
+            name="message"
+            onChange={this.handleInputChange}
+            placeholder="Write a message"
+          />
+          <input type="submit" value="Send" />
+        </form>
       )
     } else if(this.props.datePicker === false && this.props.requestID === null) {
       return (
-        <div>
-          <form id="request-form" onSubmit={this.handleRequestSubmit}>
-            <input
-              type="text"
-              name="message"
-              onChange={this.handleInputChange}
-            />
-            <input type="submit" value="Send" />
-          </form>
-        </div>
+        <form id="request-form" onSubmit={this.handleRequestSubmit}>
+          <input
+            type="text"
+            name="message"
+            onChange={this.handleInputChange}
+            placeholder="Write a message"
+          />
+          <input type="submit" value="Send" />
+        </form>
       )
     } else {
       return (
-        <div>
-          <form id="request-form" onSubmit={this.handleRequestSubmit}>
-            <DatePicker
-              selected={this.state.startDate}
-              onChange={this.handleStartChange}
-            />
-            <DatePicker
-              selected={this.state.endDate}
-              onChange={this.handleEndChange}
-            />
-            <input
-              type="text"
-              name="message"
-              onChange={this.handleInputChange}
-            />
-            <input type="submit" value="Send" />
-          </form>
-        </div>
+        <form id="request-form" onSubmit={this.handleRequestSubmit}>
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleStartChange}
+          />
+          <DatePicker
+            selected={this.state.endDate}
+            onChange={this.handleEndChange}
+          />
+          <input
+            type="text"
+            name="message"
+            onChange={this.handleInputChange}
+          />
+          <input type="submit" value="Send" />
+        </form>
       )
     }
   }

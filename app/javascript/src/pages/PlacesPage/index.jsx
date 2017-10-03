@@ -41,14 +41,18 @@ class PlacesPage extends React.Component {
     const renderedHosts = this.state.hosts.map((host) =>
     <li>
       <a href={"/users/" + host.id}>
-        <p>{host.first_name} {host.last_name}</p>
-        <p>{acceptingGuests[host.accepting_guests]}</p>
+        <div className="user-details">
+          <p>{host.first_name} {host.last_name}</p>
+          <p>{acceptingGuests[host.accepting_guests]}</p>
+        </div>
       </a>
     </li>
     );
 		return (
-			<ul>
-        {renderedHosts}
+      <ul className="host-list">
+        <div className="place-host">
+          {renderedHosts}
+        </div>
       </ul>
 		);
 	}

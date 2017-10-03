@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import App from '../../components/App';
 import axios from 'axios';
+import RequestForm from '../ProfilePage/components/RequestForm'
 
 class MessageShowPage extends React.Component {
 	constructor(...args) {
@@ -32,15 +33,26 @@ class MessageShowPage extends React.Component {
 	render() {
 		const messageList = this.state.messages.map((message) =>
 		<li key={message.message}>
-			{message.sender_name}: {message.message}
+			<div className="inbox-thread-item">
+				<p><strong>{message.sender_name}</strong></p>
+				<p>{message.message}</p>
+			</div>
 		</li>
 		)
 
 		return (
-			<ul>
-				<li>{this.state.requestInitiator}: {this.state.request.message}</li>
-				{messageList}
-			</ul>
+			<div className="message-show">
+				<RequestForm datePicker={false} requestID={this.state.request.id} />
+				<ul className="message-list-items">
+					<li>
+						<div className="inbox-thread-item">
+							<p><strong>{this.state.requestInitiator}</strong></p>
+							<p>{this.state.request.message}</p>
+						</div>
+					</li>
+						{messageList}
+				</ul>
+			</div>
 		);
 	}
 }
