@@ -12,7 +12,8 @@ class MessagesPage extends React.Component {
     super(...args);
 
     this.state = {
-			messageThreads: []
+			messageThreads: [],
+			notification: false
     }
   }
 
@@ -20,8 +21,10 @@ class MessagesPage extends React.Component {
 		var self = this;
 		axios.get('/api/messages')
 		.then(function(response){
+			console.log(response)
 			self.setState({
-				messageThreads: response.data.messages_to_render
+				messageThreads: response.data.messages_to_render,
+				notification: response.data.notification
 			})
 		})
 		.catch(function(error) {
@@ -30,18 +33,26 @@ class MessagesPage extends React.Component {
 	}
 
 	render() {
+		// TODO: if start_date and end_date are not nil, then display request dates
+		// TODO: if(this.state.notification === true), show following as strong. otherwise, don't
+
 		const messageList = this.state.messageThreads.map((message) =>
 			<li key={message.message}>
 				<div className="inbox-thread-item">
 					<a href={'/messages/' + message.id} className="message-link">
 						<div className="thread-info">
 							<div>
-								<p><strong>{message.sender}</strong></p>
-								<p>{message.sender_location}</p>
+								<p>{message.dates ? "Request dates: " + message.dates : null}</p>
 							</div>
-							<div className="message-details">
-								<p>{message.message}</p>
-								<p className="time-ago">{message.sent_time}</p>
+							<div className="message-info">
+								<div>
+									<p><strong>{message.sender}</strong></p>
+									<p><strong>{message.sender_location}</strong></p>
+								</div>
+								<div className="message-details">
+									<p>{message.message}</p>
+									<p className="time-ago">{message.sent_time}</p>
+								</div>
 							</div>
 						</div>
 					</a>

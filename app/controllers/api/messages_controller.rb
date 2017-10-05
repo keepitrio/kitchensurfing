@@ -6,6 +6,7 @@ class Api::MessagesController < ApplicationController
     traveler_messages = Request.includes(:host).where(traveler_id: current_user.id)
     messages = host_messages + traveler_messages
     messages_to_render = []
+    notification = false
 
     messages.each do |message|
       message_hash = {}
@@ -13,14 +14,17 @@ class Api::MessagesController < ApplicationController
       if host_messages.include?(message)
         message_hash[:sender] = message.traveler.first_name
         message_hash[:sender_location] = message.traveler.location
+        message_hash[:accepted] = message.accepted
       elsif traveler_messages.include?(message)
         message_hash[:sender] = message.host.first_name
         message_hash[:sender_location] = message.host.location
       end
-      message_hash[:read] = message.read
-      message_hash[:start_date] = message.start_date
-      message_hash[:end_date] = message.end_date
       message_hash[:accepted] = message.accepted
+      start_date = message.start_date.strftime('%-m/%-d/%Y') if message.start_date
+      end_date = message.end_date.strftime('%-m/%-d/%Y') if message.end_date
+      message_hash[:dates] = start_date + " - " + end_date if start_date != nil && end_date != nil
+      message_hash[:read] = message.read
+      notification = true if message_hash[:read] === false
       message_hash[:id] = message.id
       message_hash[:sent_time] = ((Time.now - message.created_at)/86400).round.to_s + " days ago"
 
@@ -28,7 +32,8 @@ class Api::MessagesController < ApplicationController
     end
 
     render json: {
-      messages_to_render: messages_to_render
+      messages_to_render: messages_to_render,
+      notification: notification
     }
   end
 

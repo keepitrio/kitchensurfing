@@ -18,11 +18,16 @@ a {
   flex-direction: column;
 }
 
-.thread-info {
+.message-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.thread-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .message-link {
@@ -72,3 +77,5 @@ a {
 .message-list-items {
   width: 100%;
 }
+
+

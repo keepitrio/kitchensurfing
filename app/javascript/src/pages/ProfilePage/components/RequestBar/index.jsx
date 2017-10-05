@@ -52,36 +52,42 @@ export default class RequestBar extends React.Component {
     const messagesURL = "/messages/" + this.state.requestID
     if(this.state.conversationExists === true) {
       return (
-        <div className="button-container">
+        <div className="profile-container">
           <p><strong>{acceptingGuests[profileUser.accepting_guests]}</strong></p>
-          <button className="profile-option-button" onClick={this.onButtonClick}>View Conversation</button>
-          {this.state.showComponent ?
-            <MessageShow profileUser={profileUser} user={user} requestID={this.state.requestID} /> : null
-          }
+          <div className="button-container">
+            {this.state.showComponent ? null : <button className="profile-option-button" onClick={this.onButtonClick}>View Conversation</button> }
+            {this.state.showComponent ?
+              <MessageShow profileUser={profileUser} user={user} requestID={this.state.requestID} /> : null
+            }
+          </div>
         </div>
       )
     } else if(this.state.conversationExists === false
             && this.state.acceptingGuests === true) {
       return (
         <div>
-          <p>{acceptingGuests[profileUser.accepting_guests]}</p>
-          <div className="button-container">
-            <button className="profile-option-button" onClick={this.onButtonClick}>Request Kitchen</button>
-            {this.state.showComponent ?
-              <RequestForm profileUser={profileUser} user={user} requestID={this.state.requestID} /> : null
-            }
+          <div className="profile-container">
+            <p>{acceptingGuests[profileUser.accepting_guests]}</p>
+            <div className="button-container">
+              <button className="profile-option-button" onClick={this.onButtonClick}>Request Kitchen</button>
+              {this.state.showComponent ?
+                <RequestForm profileUser={profileUser} user={user} requestID={this.state.requestID} /> : null
+              }
+            </div>
           </div>
         </div>
       )
     } else {
       return (
         <div>
-          <p>{acceptingGuests[profileUser.accepting_guests]}</p>
-          <div className="button-container">
-            <button className="profile-option-button" onClick={this.onButtonClick}>Message Host</button>
-            {this.state.showComponent ?
-              <RequestForm profileUser={profileUser} user={user} datePicker={false} requestID={this.state.requestID} /> : null
-            }
+          <div className="profile-container">
+            <p>{acceptingGuests[profileUser.accepting_guests]}</p>
+            <div className="button-container">
+              <button className="profile-option-button" onClick={this.onButtonClick}>Message Host</button>
+              {this.state.showComponent ?
+                <RequestForm profileUser={profileUser} user={user} datePicker={false} requestID={this.state.requestID} /> : null
+              }
+            </div>
           </div>
         </div>
       )

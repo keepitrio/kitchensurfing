@@ -42,13 +42,13 @@ export default class MessageShow extends React.Component {
     const { user } = this.props
     const { profileUser } = this.props
     const messageList = this.state.messages.map((message) =>
-      <li>{this.getUserName(message.user_id)}: {message.message}</li>
+      <li>{message.sender_name}: {message.message}</li>
     );
     return (
      <div>
       <ul>
         <li>
-          {this.getUserName(this.state.request.id)}: {this.state.request.message}
+          {this.getUserName(this.state.request.traveler_id)}: {this.state.request.message}
         </li>
         {messageList}
         <RequestForm datePicker={false} requestID={this.state.request.id} />
