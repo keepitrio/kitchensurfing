@@ -12,8 +12,7 @@ class MessagesPage extends React.Component {
     super(...args);
 
     this.state = {
-			messageThreads: [],
-			notification: false
+			messageThreads: []
     }
   }
 
@@ -23,8 +22,7 @@ class MessagesPage extends React.Component {
 		.then(function(response){
 			console.log(response)
 			self.setState({
-				messageThreads: response.data.messages_to_render,
-				notification: response.data.notification
+				messageThreads: response.data.messages_to_render
 			})
 		})
 		.catch(function(error) {
@@ -32,22 +30,44 @@ class MessagesPage extends React.Component {
 		})
 	}
 
-	render() {
-		// TODO: if start_date and end_date are not nil, then display request dates
-		// TODO: if(this.state.notification === true), show following as strong. otherwise, don't
+	readMessage = (e) => {
+		e.preventDefault();
+		let requestId = e.currentTarget.getAttribute('href').split('/messages/')[1]
+		axios.patch('/messages/' + requestId, {
+			method: 'update'
+		})
+		.then(function(response) {
+			window.location.href = '/messages/' + requestId;
+		})
+		.catch(function(error) {
+			console.log(error)
+		})
+	}
 
-		const messageList = this.state.messageThreads.map((message) =>
-			<li key={message.message}>
+	render() {
+		const messageList = this.state.messageThreads.map((message) => {
+		 let senderName;
+		 let senderLocation;
+
+		 if (message.read) {
+			senderName = message.sender;
+			senderLocation = message.sender_location;
+		} else {
+			senderName = <strong>{message.sender}</strong>;
+			senderLocation = <strong>{message.sender_location}</strong>;
+		 }
+
+		return <li key={message.message}>
 				<div className="inbox-thread-item">
-					<a href={'/messages/' + message.id} className="message-link">
+					<a href={'/messages/' + message.id} className="message-link" onClick={this.readMessage}>
 						<div className="thread-info">
 							<div>
 								<p>{message.dates ? "Request dates: " + message.dates : null}</p>
 							</div>
 							<div className="message-info">
 								<div>
-									<p><strong>{message.sender}</strong></p>
-									<p><strong>{message.sender_location}</strong></p>
+									<p>{senderName}</p>
+									<p>{senderLocation}</p>
 								</div>
 								<div className="message-details">
 									<p>{message.message}</p>
@@ -58,7 +78,8 @@ class MessagesPage extends React.Component {
 					</a>
 				</div>
 			</li>
-		)
+		});
+
 		return (
 			<div>
 				<ul>
@@ -73,7 +94,7 @@ export default class MessagesPageContainer extends React.Component {
 	render() {
 		return (
 			<App>
-				<MessagesPage user={this.props.user}/>
+				<MessagesPage user={this.props.user} isLoading={this.props.isLoading}/>
 			</App>
 		);
 	}

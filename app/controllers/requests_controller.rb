@@ -22,6 +22,10 @@ class RequestsController < ApplicationController
 
   end
 
-  def show
+  def update
+    request = Request.find(params[:id])
+    request.toggle(:accepted)
+
+    render json: request
   end
 end

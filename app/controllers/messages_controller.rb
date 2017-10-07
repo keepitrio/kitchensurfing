@@ -21,6 +21,13 @@ class MessagesController < ApplicationController
     end
   end
 
+  def update
+    request = Request.find(params[:id])
+    request.update(read:true)
+    messages = Message.where(request_id: request.id).where(read: false)
+    messages.each {|message| message.update(read:true)}
+  end
+
   def show
   end
 end
