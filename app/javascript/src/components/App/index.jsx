@@ -11,7 +11,7 @@ export default class App extends React.Component {
   }
 
 	componentWillMount() {
-		this.setState({isLoading: true})
+		this.setState({isLoading: true});
 		axios.get("/api/auth")
 		.then((response) => {
 			this.setState({

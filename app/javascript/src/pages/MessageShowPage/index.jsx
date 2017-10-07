@@ -2,17 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import App from '../../components/App';
 import axios from 'axios';
-import RequestForm from '../ProfilePage/components/RequestForm'
+import RequestForm from '../ProfilePage/components/RequestForm';
 
 class MessageShowPage extends React.Component {
 	constructor(...args) {
-		super(...args)
+		super(...args);
 		this.state = {
 			request: {},
 			messages: [],
 			host: '',
 			traveler: ''
-		}
+		};
 	}
 
 	componentWillMount = () => {
@@ -30,33 +30,47 @@ class MessageShowPage extends React.Component {
 		})
 	}
 
-	acceptRequest = (e) => {
+	toggleAcceptance = (e) => {
 		e.preventDefault();
-		var self = this;
 		axios.patch('/requests/' + this.state.request.id, {
-			method: 'update'
+			method: 'update',
+			params: { reason_for_update: "toggle acceptance"}
 		})
 		.then(function(response) {
-			Location.reload();
+			location.reload();
 		})
 		.catch(function(error) {
-			console.log(error)
+			console.log(error);
+		});
+	};
+
+	cancelRequest = (e) => {
+		e.preventDefault();
+		axios.patch('/requests/' + this.state.request.id, {
+			method: 'update',
+			reason_for_update: "cancel request"
 		})
-	}
+		.then(function(response) {
+			location.reload();
+		})
+		.catch(function(error) {
+			console.log(error);
+		});
+	};
 
 	render() {
 		if(this.props.isLoading){
-			return null
+			return null;
 		}
 
 		let { request } = this.state;
 		let requestDetails;
 		if(request.start_date && !request.accepted && request.host_id === this.props.user.id){
-			requestDetails = <div><button onClick={this.acceptRequest}>Accept request</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
+			requestDetails = <div><button onClick={this.toggleAcceptance}>Accept request</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
 		} else if(request.start_date && request.accepted && request.host_id === this.props.user.id) {
-			requestDetails = <div><button onClick={this.acceptRequest}>Cancel</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
+			requestDetails = <div><button onClick={this.toggleAcceptance}>Cancel</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
 		} else if(request.start_date && request.accepted && request.traveler_id === this.props.user.id) {
-			requestDetails = <div><button onClick={this.acceptRequest}>Cancel Request</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
+			requestDetails = <div><button onClick={this.cancelRequest}>Cancel Request</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
 		} else {
 			requestDetails = null;
 		}

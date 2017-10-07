@@ -24,8 +24,11 @@ class RequestsController < ApplicationController
 
   def update
     request = Request.find(params[:id])
-    request.toggle(:accepted)
-
+    if params[:reason_for_update] === "toggle acceptance"
+     request.toggle(:accepted)
+    elsif params[:reason_for_update] === "cancel request"
+      request.update(start_date: nil, end_date: nil)
+    end
     render json: request
   end
 end
