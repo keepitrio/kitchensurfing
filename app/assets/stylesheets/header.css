@@ -60,11 +60,12 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
-  width: 25%;
+  max-width: 300px;
   height: 30%;
   flex-direction: column;
   margin-top: 5px;
   background-color: white;
+  padding: 20px;
 }
 
 .login-title, .register-title {
@@ -81,11 +82,10 @@
 
 .login-form, .register-form {
   width: 100%;
-
 }
 
 .login-form input, .register-form input {
-  width: 75%;
+  width: 100%;
   margin: 5px;
   padding: 8px;
   border-radius: 3px;
@@ -94,7 +94,7 @@
 }
 
 .register-input {
-  width: 72%;
+  width: 100%;
   margin: 5px;
   padding: 8px;
   border-radius: 3px;

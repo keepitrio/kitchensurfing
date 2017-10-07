@@ -66,41 +66,33 @@ export default class RegistrationForm extends React.Component {
     }
     return (
       <form onSubmit={this.handleSubmit} className='register-form'>
-        <label>
-          <input
-            placeholder="First name"
-            name="firstName"
-            type="string"
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <input
+          placeholder="First name"
+          name="firstName"
+          type="string"
+          onChange={this.handleInputChange}
+        />
         <br />
-        <label>
-          <input
-            placeholder="Last name"
-            name="lastName"
-            type="string"
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <input
+          placeholder="Last name"
+          name="lastName"
+          type="string"
+          onChange={this.handleInputChange}
+        />
         <br />
-        <label>
-          <input
-            placeholder="Email"
-            name="email"
-            type="string"
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <input
+          placeholder="Email"
+          name="email"
+          type="string"
+          onChange={this.handleInputChange}
+        />
         <br />
-        <label>
-          <input
-            placeholder="Password"
-            name="password"
-            type="password"
-            onChange={this.handleInputChange}
-          />
-        </label>
+        <input
+          placeholder="Password"
+          name="password"
+          type="password"
+          onChange={this.handleInputChange}
+        />
         <br />
         <div className='register-input'>
           <PlacesAutocomplete
