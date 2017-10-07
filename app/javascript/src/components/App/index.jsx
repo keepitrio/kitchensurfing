@@ -5,23 +5,32 @@ import axios from 'axios';
 export default class App extends React.Component {
   constructor(props) {
   	super(props);
-  	this.state = {};
+  	this.state = {
+			isLoading: false
+		};
   }
 
 	componentWillMount() {
+		this.setState({isLoading: true})
 		axios.get("/api/auth")
 		.then((response) => {
-			this.setState({ user: response.data });
+			this.setState({
+				user: response.data,
+				isLoading: false
+			});
 		});
 	}
 
 	render() {
-		const { user } = this.state;
-		const modifiedChild = React.cloneElement(this.props.children, { user });
+		const { user, isLoading } = this.state;
+		const modifiedChild = React.cloneElement(this.props.children, {
+			user,
+			isLoading,
+		});
 
 		return (
 			<div className="body">
-				<Header user={ user } />
+				<Header user={ user } isLoading={ isLoading }/>
 				<div className="body-container">
 					{modifiedChild}
 				</div>

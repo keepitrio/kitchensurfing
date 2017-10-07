@@ -12,21 +12,32 @@ class HomePage extends React.Component {
 		user: PropTypes.object,
 	};
 
+	constructor(...args) {
+		super(...args)
+		this.state = {
+
+		}
+	}
+
 	render() {
-		const { user } = this.props;
+		const { user, isLoading } = this.props;
+		if(isLoading) {
+			return null
+		}
+
 		if(user) {
 			return (
 				<div className="dashboard">
 					<div className="user-header">
 						<UserHeader user={user} />
-						{this.props.user && <UserGuestPreference user={ this.props.user }/>}
+						{user && <UserGuestPreference user={ user }/>}
 					</div>
 					<div className="upcoming">
 						<div className="upcoming-trips">
-							{this.props.user && <TravelPlans user={user}/>}
+							{user && <TravelPlans user={user}/>}
 						</div>
 						<div className="upcoming-guests">
-							{this.props.user && <UpcomingGuests user={user} />}
+							{user && <UpcomingGuests user={user} />}
 						</div>
 					</div>
 				</div>

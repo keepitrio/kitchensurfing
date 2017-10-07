@@ -48,13 +48,19 @@ class PlacesPage extends React.Component {
       </a>
     </li>
     );
-		return (
-      <ul className="host-list">
-        <div className="place-host">
-          {renderedHosts}
-        </div>
-      </ul>
-		);
+    if(this.state.hosts) {
+      return (
+        <ul className="host-list">
+          <div className="place-host">
+            {renderedHosts}
+          </div>
+        </ul>
+      );
+    } else if(this.state.hosts.length === 0) {
+      return (
+        <h3>No hosts available.</h3>
+      )
+    }
 	}
 }
 
