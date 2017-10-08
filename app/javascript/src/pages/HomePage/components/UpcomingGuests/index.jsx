@@ -8,10 +8,10 @@ export default class UpcomingGuests extends React.Component {
   };
 
   constructor(...args) {
-    super(...args)
+    super(...args);
     this.state = {
       hosting: []
-    }
+    };
   }
 
   componentDidMount = () => {
@@ -58,6 +58,6 @@ export default class UpcomingGuests extends React.Component {
         </div>
       )
     }
-	}
+	};
 }
 

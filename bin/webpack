@@ -19,6 +19,16 @@ unless File.exist?(WEBPACK_CONFIG)
   exit!
 end
 
+if !Dir.exist?(NODE_MODULES_PATH)
+  puts "node_modules does not exist!"
+  exit!
+end
+
+if !File.exist?(File.join(NODE_MODULES_PATH, '.bin/webpack'))
+  puts ".bin/webpack does not exist!"
+  exit!
+end
+
 env = { "NODE_PATH" => NODE_MODULES_PATH.shellescape }
 cmd = [ "#{NODE_MODULES_PATH}/.bin/webpack", "--config", WEBPACK_CONFIG ] + ARGV
 

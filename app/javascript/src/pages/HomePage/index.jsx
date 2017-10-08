@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import App from '../../components/App';
-import UserGuestPreference from './components/UserGuestPreference'
-import UserHeader from '../../components/UserHeader'
-import TravelPlans from './components/TravelPlans'
-import UpcomingGuests from './components/UpcomingGuests'
+import UserGuestPreference from './components/UserGuestPreference';
+import UserHeader from '../../components/UserHeader';
+import TravelPlans from './components/TravelPlans';
+import UpcomingGuests from './components/UpcomingGuests';
 
 
 class HomePage extends React.Component {
@@ -12,21 +12,32 @@ class HomePage extends React.Component {
 		user: PropTypes.object,
 	};
 
+	constructor(...args) {
+		super(...args);
+		this.state = {
+
+		};
+	}
+
 	render() {
-		const { user } = this.props;
+		const { user, isLoading } = this.props;
+		if(isLoading) {
+			return null;
+		}
+
 		if(user) {
 			return (
 				<div className="dashboard">
 					<div className="user-header">
 						<UserHeader user={user} />
-						{this.props.user && <UserGuestPreference user={ this.props.user }/>}
+						{user && <UserGuestPreference user={ user }/>}
 					</div>
 					<div className="upcoming">
 						<div className="upcoming-trips">
-							{this.props.user && <TravelPlans user={user}/>}
+							{user && <TravelPlans user={user}/>}
 						</div>
 						<div className="upcoming-guests">
-							{this.props.user && <UpcomingGuests user={user} />}
+							{user && <UpcomingGuests user={user} />}
 						</div>
 					</div>
 				</div>
@@ -34,7 +45,8 @@ class HomePage extends React.Component {
 		} else {
 			return (
 				<div className="homepage-logged-out">
-					<h4>Welcome to Kitchensurfing. Register to get started! </h4>
+					<h5>Welcome to Kitchensurfing!</h5>
+					<p>Click 'join' to get started. </p>
 				</div>
 			)
 		}

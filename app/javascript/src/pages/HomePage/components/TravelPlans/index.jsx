@@ -8,10 +8,10 @@ export default class TravelPlans extends React.Component {
   };
 
   constructor(...args) {
-    super(...args)
+    super(...args);
     this.state = {
       trips: []
-    }
+    };
   }
 
   componentDidMount = () => {
@@ -58,6 +58,6 @@ export default class TravelPlans extends React.Component {
         </div>
       )
     }
-	}
+	};
 }
 

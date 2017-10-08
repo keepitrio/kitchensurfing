@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import App from '../../components/App';
 import UserHeader from '../../components/UserHeader';
-import RequestBar from './components/RequestBar'
+import RequestBar from './components/RequestBar';
 
 class ProfilePage extends React.Component {
 	static propTypes = {
@@ -11,10 +11,10 @@ class ProfilePage extends React.Component {
 	};
 
 	constructor(...args) {
-		super(...args)
+		super(...args);
 		this.state = {
 			profileUser: {}
-		}
+		};
 	}
 
 	componentWillMount = () => {

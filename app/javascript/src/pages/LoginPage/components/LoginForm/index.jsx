@@ -8,7 +8,7 @@ export default class LoginForm extends React.Component {
 		this.state = {
 			email: '',
 			password: ''
-		}
+		};
 	}
 
 	handleInputChange = (e) => {
@@ -30,13 +30,13 @@ export default class LoginForm extends React.Component {
 		})
 		.catch(function(error) {
 			console.log(error);
-		})
-	}
+		});
+	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.loginUser(this.state.email, this.state.password)
-	}
+		this.loginUser(this.state.email, this.state.password);
+	};
 
 	render() {
 		return (

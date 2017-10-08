@@ -2,8 +2,6 @@ class Api::RequestsController < ApplicationController
   include SessionsHelper
 
   def index
-    p params
-    p "*" * 100
     if params[:type] === "trips"
       requests = Request.includes(:host).where(traveler_id: current_user.id, accepted: true).where("start_date > ?", Date.today)
       trips = []

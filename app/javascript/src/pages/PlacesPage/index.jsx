@@ -13,7 +13,7 @@ class PlacesPage extends React.Component {
 
     this.state = {
       hosts: []
-    }
+    };
   }
 
   componentWillMount = () => {
@@ -25,7 +25,7 @@ class PlacesPage extends React.Component {
     }
     axios.get(url)
     .then(function(response) {
-      self.setState({hosts: response.data})
+      self.setState({hosts: response.data});
     })
     .catch(function(error) {
       console.log(error);
@@ -48,13 +48,19 @@ class PlacesPage extends React.Component {
       </a>
     </li>
     );
-		return (
-      <ul className="host-list">
-        <div className="place-host">
-          {renderedHosts}
-        </div>
-      </ul>
-		);
+    if(this.state.hosts) {
+      return (
+        <ul className="host-list">
+          <div className="place-host">
+            {renderedHosts}
+          </div>
+        </ul>
+      );
+    } else if(this.state.hosts.length === 0) {
+      return (
+        <h3>No hosts available.</h3>
+      )
+    }
 	}
 }
 
