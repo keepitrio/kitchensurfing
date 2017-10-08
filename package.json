@@ -2,9 +2,6 @@
   "name": "kitchensurfing",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "postinstall": "cd client && npm install"
-  },
   "dependencies": {
     "@rails/webpacker": "^3.0.1",
     "axios": "^0.16.2",
