@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
 export default class UserGuestPreference extends React.Component {
 	static propTypes = {
@@ -8,10 +8,10 @@ export default class UserGuestPreference extends React.Component {
   };
 
   constructor(...args) {
-    super(...args)
+    super(...args);
     this.state = {
       acceptingGuests: ''
-    }
+    };
   }
 
   componentDidMount = () => {
@@ -29,20 +29,20 @@ export default class UserGuestPreference extends React.Component {
       accepting_guests: this.state.acceptingGuests
     })
     .then(function(response) {
-      console.log("success")
+      console.log("success");
     })
     .catch(function(error) {
-      console.log(error)
-    })
-  }
+      console.log(error);
+    });
+  };
 
   handleChange = (e) => {
     const value = e.target.value;
 
     this.setState({
       acceptingGuests: value
-    })
-  }
+    });
+  };
 
 	render() {
 		return(

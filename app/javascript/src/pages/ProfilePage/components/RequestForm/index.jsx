@@ -5,12 +5,12 @@ import axios from 'axios';
 
 export default class RequestForm extends React.Component {
   constructor(...args) {
-    super(...args)
+    super(...args);
     this.state = {
       startDate: moment(),
       endDate: moment(),
       message: ''
-    }
+    };
   }
 
   handleStartChange = (date) => {

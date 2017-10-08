@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import App from '../../components/App';
-import UserGuestPreference from './components/UserGuestPreference'
-import UserHeader from '../../components/UserHeader'
-import TravelPlans from './components/TravelPlans'
-import UpcomingGuests from './components/UpcomingGuests'
+import UserGuestPreference from './components/UserGuestPreference';
+import UserHeader from '../../components/UserHeader';
+import TravelPlans from './components/TravelPlans';
+import UpcomingGuests from './components/UpcomingGuests';
 
 
 class HomePage extends React.Component {
@@ -13,16 +13,16 @@ class HomePage extends React.Component {
 	};
 
 	constructor(...args) {
-		super(...args)
+		super(...args);
 		this.state = {
 
-		}
+		};
 	}
 
 	render() {
 		const { user, isLoading } = this.props;
 		if(isLoading) {
-			return null
+			return null;
 		}
 
 		if(user) {
@@ -45,7 +45,8 @@ class HomePage extends React.Component {
 		} else {
 			return (
 				<div className="homepage-logged-out">
-					<h4>Welcome to Kitchensurfing. Register to get started! </h4>
+					<h5>Welcome to Kitchensurfing!</h5>
+					<p>Click 'join' to get started. </p>
 				</div>
 			)
 		}

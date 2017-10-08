@@ -1,6 +1,10 @@
 {
   "name": "kitchensurfing",
+  "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "postinstall": "cd client && npm install"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.0.1",
     "axios": "^0.16.2",
@@ -11,7 +15,8 @@
     "react-datepicker": "^0.55.0",
     "react-dom": "^15.6.1",
     "react-on-rails": "^9.0.3",
-    "react-places-autocomplete": "^5.4.3"
+    "react-places-autocomplete": "^5.4.3",
+    "webpack": "^3.6.0"
   },
   "devDependencies": {
     "css-loader": "^0.28.7",

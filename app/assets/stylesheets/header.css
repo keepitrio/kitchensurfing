@@ -86,21 +86,17 @@
 
 .login-form input, .register-form input {
   width: 100%;
-  margin: 5px;
-  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border-radius: 3px;
   box-shadow: none;
   border:1px solid lightgray;
 }
 
-.register-input {
-  width: 100%;
-  margin: 5px;
-  padding: 8px;
-  border-radius: 3px;
-  box-shadow: none;
-  margin-left: 15px;
-  color: grey;
+#PlacesAutocomplete__root input[type="text"] {
+  padding: 10px 0px !important;
 }
 
 .login-form input:focus{
