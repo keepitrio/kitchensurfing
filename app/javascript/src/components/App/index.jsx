@@ -2,6 +2,10 @@ import React from 'react';
 import Header from '../Header';
 import axios from 'axios';
 
+axios.defaults.headers.common['X-CSRF-Token'] = document
+	.querySelector('meta[name="csrf-token"]')
+	.getAttribute('content');
+
 export default class App extends React.Component {
   constructor(props) {
   	super(props);
