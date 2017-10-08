@@ -45,7 +45,8 @@ class HomePage extends React.Component {
 		} else {
 			return (
 				<div className="homepage-logged-out">
-					<h4>Welcome to Kitchensurfing. Register to get started! </h4>
+					<h5>Welcome to Kitchensurfing!</h5>
+					<p>Click 'join' to get started. </p>
 				</div>
 			)
 		}

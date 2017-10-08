@@ -28,6 +28,11 @@
 
 .homepage-logged-out {
   text-align: center;
-  font-size: 3em;
   margin: 20px;
+  border: 1px solid white;
+  background-color: white;
+  h5 {
+    margin-bottom: 10px;
+    font-size: 2em;
+  }
 }
