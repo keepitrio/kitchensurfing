@@ -7,7 +7,7 @@ export default class Header extends React.Component {
 		super(...args);
 		this.state = {
 			unreadMessages: 0
-		}
+		};
 	}
 	componentWillReceiveProps = (nextProps) => {
 		var self = this;
@@ -18,7 +18,7 @@ export default class Header extends React.Component {
 			})
 			.catch(function(error) {
 				console.log(error);
-			})
+			});
 		}
 	}
 

@@ -5,14 +5,14 @@ import axios from 'axios';
 
 export default class RequestBar extends React.Component {
   constructor(...args) {
-    super(...args)
+    super(...args);
 
     this.state = {
       showComponent: false,
       conversationExists: false,
       acceptingGuests: false,
       requestID: null
-    }
+    };
   }
 
   componentDidMount = () => {
@@ -31,7 +31,7 @@ export default class RequestBar extends React.Component {
       }
     })
     .catch(function(error) {
-      console.log(error)
+      console.log(error);
     })
   }
 

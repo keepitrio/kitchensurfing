@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PlacesAutocomplete from 'react-places-autocomplete'
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 export default class SearchBar extends React.Component {
   constructor(...args) {
@@ -8,7 +8,7 @@ export default class SearchBar extends React.Component {
 
     this.state = {
       searchLocation: ''
-    }
+    };
   }
 
   locationOnChange = (searchLocation) => {
@@ -17,18 +17,18 @@ export default class SearchBar extends React.Component {
 
   handleSelect = (address, placeId) => {
     window.location = '/places?' + address;
-  }
+  };
 
 	render() {
     const locationInputProps = {
       value: this.state.searchLocation,
       onChange: this.locationOnChange,
       placeholder: 'Where are you going?'
-    }
+    };
 
     const locationOptions = {
       types: ['(cities)']
-    }
+    };
 
 		return (
       <form className='search-bar' onSubmit={this.handleSelect}>
@@ -41,5 +41,5 @@ export default class SearchBar extends React.Component {
         </div>
       </form>
     )
-	}
+	};
 }

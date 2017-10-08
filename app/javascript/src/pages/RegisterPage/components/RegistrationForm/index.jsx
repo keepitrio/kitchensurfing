@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PlacesAutocomplete from 'react-places-autocomplete'
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 export default class RegistrationForm extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class RegistrationForm extends React.Component {
 
   locationOnChange = (location) => {
     this.setState({ location });
-  }
+  };
 
   createUser(firstName, lastName, email, password, location){
     axios.post("/users", {
@@ -41,7 +41,7 @@ export default class RegistrationForm extends React.Component {
     })
     .catch(function(error) {
       console.log(error);
-    })
+    });
   }
 
   handleSubmit = (e) => {
@@ -52,18 +52,19 @@ export default class RegistrationForm extends React.Component {
       this.state.email,
       this.state.password,
       this.state.location
-    )
-  }
+    );
+  };
 
   render() {
     const locationInputProps = {
       value: this.state.location,
       onChange: this.locationOnChange,
       placeholder: 'Enter a city',
-    }
+      style: "display: inline-block; width: 100%; padding-left: 0px; padding-right: 0px;"
+    };
     const locationOptions = {
       types: ['(cities)']
-    }
+    };
     return (
       <form onSubmit={this.handleSubmit} className='register-form'>
         <input
@@ -94,12 +95,10 @@ export default class RegistrationForm extends React.Component {
           onChange={this.handleInputChange}
         />
         <br />
-        <div className='register-input'>
-          <PlacesAutocomplete
-            inputProps={locationInputProps}
-            options={locationOptions}
-          />
-        </div>
+        <PlacesAutocomplete
+          inputProps={locationInputProps}
+          options={locationOptions}
+        />
         <br />
         <input type="submit" value="Register"/>
       </form>

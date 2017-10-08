@@ -13,7 +13,7 @@ class PlacesPage extends React.Component {
 
     this.state = {
       hosts: []
-    }
+    };
   }
 
   componentWillMount = () => {
@@ -25,7 +25,7 @@ class PlacesPage extends React.Component {
     }
     axios.get(url)
     .then(function(response) {
-      self.setState({hosts: response.data})
+      self.setState({hosts: response.data});
     })
     .catch(function(error) {
       console.log(error);

@@ -13,7 +13,7 @@ class MessagesPage extends React.Component {
 
     this.state = {
 			messageThreads: []
-    }
+    };
   }
 
   componentWillMount = () => {
@@ -26,8 +26,8 @@ class MessagesPage extends React.Component {
 			})
 		})
 		.catch(function(error) {
-			console.log(error)
-		})
+			console.log(error);
+		});
 	}
 
 	readMessage = (e) => {
