@@ -1,24 +1,15 @@
-# README
+# Kitchensurfing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A [couchsurfing](https://www.couchsurfing.com/) clone. You can search for hosts in other places in the world to house you and that you can cook for by using their kitchen.
 
-Things you may want to cover:
+## [Live demo](https://kitchensurfing.herokuapp.com/)
 
-* Ruby version
+## Built With
 
-* System dependencies
+* [React](https://reactjs.org/) - Web framework used for frontend
+* [Ruby on Rails](http://rubyonrails.org/) - Used for backend
+* [Google Places Autocomplete](https://developers.google.com/places/web-service/autocomplete) - Used to allow easy searching
 
-* Configuration
+## License
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

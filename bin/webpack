@@ -19,7 +19,6 @@ unless File.exist?(WEBPACK_CONFIG)
   exit!
 end
 
-
 if !Dir.exist?(NODE_MODULES_PATH)
   puts "node_modules does not exist!"
   exit!
