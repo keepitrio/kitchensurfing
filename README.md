@@ -2,8 +2,6 @@
 
 A [couchsurfing](https://www.couchsurfing.com/) clone. You can search for hosts in other places in the world to house you and that you can cook for by using their kitchen.
 
-## [Live demo](https://kitchensurfing.herokuapp.com/)
-
 ## Built With
 
 * [React](https://reactjs.org/) - Web framework used for frontend
