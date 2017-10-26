@@ -37,7 +37,9 @@ export default class RequestForm extends React.Component {
       axios.post('/requests', {
         message: this.state.message,
         host_id: this.props.profileUser && this.props.profileUser.id,
-        traveler_id: this.props.user && this.props.user.id
+        traveler_id: this.props.user && this.props.user.id,
+        start_date: this.state.startDate,
+        end_date: this.state.endDate
       })
       .then(function(response){
         console.log("success")

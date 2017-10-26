@@ -11,7 +11,8 @@ class MessageShowPage extends React.Component {
 			request: {},
 			messages: [],
 			host: '',
-			traveler: ''
+			traveler: '',
+			initial_sent_at: ''
 		};
 	}
 
@@ -22,7 +23,8 @@ class MessageShowPage extends React.Component {
 			self.setState({
 				request: response.data.request,
 				messages: response.data.messages,
-				requestInitiator: response.data.request_initiator
+				requestInitiator: response.data.request_initiator,
+				initial_sent_at: response.data.initial_sent_at
 			})
 		})
 		.catch(function(error) {
@@ -34,7 +36,7 @@ class MessageShowPage extends React.Component {
 		e.preventDefault();
 		axios.patch('/requests/' + this.state.request.id, {
 			method: 'update',
-			params: { reason_for_update: "toggle acceptance"}
+			reason_for_update: "toggle acceptance"
 		})
 		.then(function(response) {
 			location.reload();

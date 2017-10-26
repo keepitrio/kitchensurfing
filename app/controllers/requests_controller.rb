@@ -26,6 +26,7 @@ class RequestsController < ApplicationController
     request = Request.find(params[:id])
     if params[:reason_for_update] === "toggle acceptance"
      request.toggle(:accepted)
+     request.save
     elsif params[:reason_for_update] === "cancel request"
       request.update(start_date: nil, end_date: nil)
     end
