@@ -67,12 +67,30 @@ class MessageShowPage extends React.Component {
 
 		let { request } = this.state;
 		let requestDetails;
-		if(request.start_date && !request.accepted && request.host_id === this.props.user.id){
-			requestDetails = <div><button onClick={this.toggleAcceptance}>Accept request</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
-		} else if(request.start_date && request.accepted && request.host_id === this.props.user.id) {
-			requestDetails = <div><button onClick={this.toggleAcceptance}>Cancel</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
-		} else if(request.start_date && request.accepted && request.traveler_id === this.props.user.id) {
-			requestDetails = <div><button onClick={this.cancelRequest}>Cancel Request</button><p>Requested dates: {request.start_date} - {request.end_date}</p></div>
+		if(request.start_date
+			&& !request.accepted
+			&& request.host_id === this.props.user.id)
+			{requestDetails =
+				<div>
+					<button onClick={this.toggleAcceptance}>Accept request</button>
+					<p>Requested dates: {request.start_date} - {request.end_date}</p>
+				</div>
+		} else if(request.start_date
+			&& request.accepted
+			&& request.host_id === this.props.user.id)
+			{requestDetails =
+				<div>
+					<button onClick={this.toggleAcceptance}>Cancel</button>
+					<p>Requested dates: {request.start_date} - {request.end_date}</p>
+				</div>
+		} else if(request.start_date
+			&& request.accepted
+			&& request.traveler_id === this.props.user.id)
+			{requestDetails =
+				<div>
+					<button onClick={this.cancelRequest}>Cancel Request</button>
+					<p>Requested dates: {request.start_date} - {request.end_date}</p>
+				</div>
 		} else {
 			requestDetails = null;
 		}

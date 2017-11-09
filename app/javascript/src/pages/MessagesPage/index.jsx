@@ -20,7 +20,6 @@ class MessagesPage extends React.Component {
 		var self = this;
 		axios.get('/api/messages')
 		.then(function(response){
-			console.log(response)
 			self.setState({
 				messageThreads: response.data.messages_to_render
 			})
@@ -55,7 +54,7 @@ class MessagesPage extends React.Component {
 		} else {
 			senderName = <strong>{message.sender}</strong>;
 			senderLocation = <strong>{message.sender_location}</strong>;
-		 }
+		}
 
 		return <li key={message.message}>
 				<div className="inbox-thread-item">
